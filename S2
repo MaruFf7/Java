@@ -17,3 +17,75 @@ class Cal{
         
     }
 }
+
+Q2)
+
+import java.util.*;
+
+class CricketPlayer{
+   String name;
+   double innings; 
+   int notout;
+   int  runs;
+   double batavg;
+   
+   CricketPlayer(String name,double innings ,int notout,int runs,double batavg){
+       this.name=name;
+       this.innings=innings;
+       this.notout=notout;
+       this.runs=runs;
+       this.batavg=runs/(innings-notout);
+   }
+   public void display()
+   {
+       System.out.println("Name :"+name);
+       System.out.println("Innings Played : "+innings);
+       System.out.println("Times Not Out : "+notout);
+       System.out.println("Total Runs made : "+runs);
+       System.out.println("Batting Average : "+batavg);
+   }
+   public void sort(CricketPlayer play[],int n)
+   {
+         for (int i=0;i<n;i++)
+         {
+            for (int j=0;j<n-i-1;j++)
+            {
+                if (play[j].batavg>play[j+1].batavg)
+                {
+                    CricketPlayer temp= play[j];
+                    play[j]=play[j+1];
+                    play[j+1]=temp;
+                }
+            }
+         }
+   }
+   
+   public static void main(String[] args){
+       Scanner sc =new Scanner (System.in);
+       System.out.println("Enter the Number of Players : ");
+       int n=sc.nextInt();
+       CricketPlayer ob[]=new CricketPlayer[n];
+       
+       for (int i=0;i<n;i++)
+       {
+           System.out.println("Enter the Details for Player"+(i+1)+" : ");
+           System.out.println("Name of Player : ");
+           String name=sc.next();
+           System.out.println("Innings Played : ");
+           double innings=sc.nextDouble();
+           System.out.println("Times Not Out : ");
+           int notout=sc.nextInt();
+           System.out.println("Total Runs made : ");
+           int runs=sc.nextInt();
+           double batavg=runs/(innings-notout);
+           ob[i]=new CricketPlayer(name,innings,notout,runs,batavg);
+           
+       }
+       ob[0].sort(ob,n);
+       System.out.println("Displaying Details .....");
+       for (int i=0;i<n;i++)
+       {
+           ob[i].display();
+       }
+   }
+}
