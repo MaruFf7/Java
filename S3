@@ -1,0 +1,69 @@
+Q2)
+
+import java.io.IOException;
+import java.util.*;
+class CovidPositive extends Exception{
+      public CovidPositive()
+      {
+             System.out.println("Patient is CovidPositive and Need to Hospitalized");
+      }
+}
+
+
+class Patient{
+    String name;
+    int age;
+    int oxy;
+    int hrct;
+
+    public Patient(String name,int age,int oxy,int hrct)
+    {
+        this.name=name;
+        this.age=age;
+        this.oxy=oxy;
+        this.hrct=hrct;
+    }
+    public void display(){
+        System.out.println("Displaying Details : ");
+        System.out.println("Name :"+name);
+        System.out.println("Age :"+age);
+        System.out.println("Oxygen Level :"+oxy);
+        System.out.println("HRCT report :"+hrct);
+    }
+
+    public static void main(String[] args)throws IOException
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter Number of Patients : ");
+        int n=sc.nextInt();
+
+        for (int i=0;i<n;i++)
+        {
+            System.out.println("Enter Details for Patient "+(i+1)+":");
+            System.out.println("Name :");
+            String name=sc.next();
+            System.out.println("Age :");
+            int age=sc.nextInt();
+            System.out.println("Oxygen Level :");
+            int oxy=sc.nextInt();
+            System.out.println("HRCT report :");
+            int hrct=sc.nextInt();
+
+            Patient ob=new Patient(name,age,oxy,hrct);
+        try{
+            if (ob.oxy <95 && ob.hrct >10)
+                throw new CovidPositive();
+            else{
+                ob.display();
+            }      
+        } 
+        catch (Exception e)
+        {
+            System.out.println("Exception throen");
+            System.out.println(e);
+        }
+
+    }
+
+} 
+}
