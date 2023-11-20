@@ -1,0 +1,19 @@
+Q1)
+
+class Cal{
+    
+    public static void main(String args[]){
+        String First_Name=args[0];
+        String Last_Name=args[1];
+        double Weight=Double.parseDouble(args[2]);
+        double Height=Double.parseDouble(args[3]);
+        double BMI=Weight/(Height*Height);
+        
+        System.out.println("First Name : "+First_Name);
+        System.out.println("Last Name : "+Last_Name);
+        System.out.println("Weight :"+Weight);
+        System.out.println("Height : "+Height);
+        System.out.println("BMI :"+BMI);
+        
+    }
+}
